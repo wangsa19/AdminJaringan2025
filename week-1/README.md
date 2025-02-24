@@ -14,10 +14,12 @@
   <hr><hr>
 </div>
 
-<!-- # Tugas review Deskripsi : 
+# Tugas review Deskripsi : 
 ## 1.	Analisa file http.cap dengan wireshark : Versi HTTP yang digunakan, IP address dari client maupun server, waktu dari client mengirimkan HTTP request., Waktu dari server mengirimkan server dan berapa durasinya 
 
 ![screenshot](assets/wireshark-1.png)
+
+•   Versi HTTP: 1.1
 
 •	Ip address client : 145.254.160.237
 
@@ -74,4 +76,4 @@ c.	Four-Way Handshake (Terminasi Koneksi)
 
 •	ACK: Klien merespons dengan ACK, dan koneksi ditutup sepenuhnya.
 
-Protokol TCP dirancang untuk menjamin keandalan komunikasi dengan mekanisme seperti error checking, retransmission, dan flow control untuk memastikan data sampai dengan benar dan berurutan. -->
+Protokol TCP dirancang untuk menjamin keandalan komunikasi dengan mekanisme seperti error checking, retransmission, dan flow control untuk memastikan data sampai dengan benar dan berurutan.
