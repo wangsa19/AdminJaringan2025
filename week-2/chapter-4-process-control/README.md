@@ -81,8 +81,7 @@ Sekitar tiga puluh jenis yang berbeda didefinisikan, dan mereka digunakan dalam 
 - Mereka dapat dikirim oleh kernel ketika sebuah proses melakukan pelanggaran seperti pembagian dengan nol.
 - Mereka dapat dikirim oleh kernel untuk memberitahukan sebuah proses tentang sebuah kondisi yang "menarik" seperti matinya sebuah proses anak atau tersedianya data pada sebuah saluran I/O.
     
-    ![signal.png](assets/signal.png)
-    
+    ![screenshot](assets/signal.png)
 
 Sinyal KILL, INT, TERM, HUP, dan QUIT terdengar seolah-olah memiliki arti yang kurang lebih sama, tetapi penggunaannya sebenarnya sangat berbeda.
 
@@ -110,9 +109,9 @@ Killall membunuh proses hanya berdasarkan namanya, bukan nomor identifikasinya. 
 killall firefox
 ```
 
-![before-killall-firefoxesr.jpg](assets/before-killall-firefoxesr.jpg)
+![screenshot](assets/before-killall-firefoxesr.jpg)
 
-![after-killall-firefoxesr.jpg](assets/after-killall-firefoxesr.jpg)
+![screenshot](assets/after-killall-firefoxesr.jpg)
 
 Perintah killall mirip dengan perintah pkill, tetapi memiliki lebih banyak opsi.
 
@@ -122,9 +121,9 @@ contoh:
 pkill -u abdoufermat # kill all processes owned by user abdoufermat
 ```
 
-![before-pkill-dewangga.jpg](assets/before-pkill-dewangga.jpg)
+![screenshot](assets/before-pkill-dewangga.jpg)
 
-![Screenshot 2025-03-04 080315.png](assets/after-pkill-u-dewangga.png)
+![screenshot](assets/after-pkill-u-dewangga.png)
 
 ### **PS: Monitoring Processes**
 
@@ -134,29 +133,29 @@ PID, UID, prioritas, dan terminal kontrol proses dapat ditampilkan oleh ps.  Sel
 
 Dengan menjalankan ps aux, Anda dapat melihat gambaran umum sistem. Opsi a meminta ps untuk menampilkan proses dari semua pengguna, dan opsi u meminta ps untuk memberikan informasi rinci tentang setiap proses. Opsi x meminta ps untuk menampilkan proses yang tidak berhubungan dengan terminal.
 
-![Screenshot from 2025-02-28 20-41-16.png](assets/psauxhead-8.png)
+![screenshot](assets/psauxhead-8.png)
 
 Dengan menggunakan perintah "ps aux | head -8", Anda akan melihat semua proses yang sedang berjalan dengan informasi lengkap. Namun, hasilnya dibatasi hanya pada delapan baris pertama.
 
-![process-explanation.png](assets/process-explanation.png)
+![screenshot](assets/process-explanation.png)
 
 Lax, yang menyediakan informasi teknis tentang proses, sedikit lebih cepat daripada aux karena tidak perlu menyelesaikan nama pengguna dan grup.
 
-![Screenshot from 2025-02-28 20-45-11.png](assets/pslaxhead-8.png)
+![screenshot](assets/pslaxhead-8.png)
 
 Anda dapat memfilter output ps dengan grep untuk mencari proses tertentu.
 
-![Screenshot from 2025-02-28 20-47-33.png](assets/psaux-grepfirefox.png)
+![screenshot](assets/psaux-grepfirefox.png)
 
 Perintah "ps aux | grep -v grep | grep firefox" menampilkan proses yang mengandung kata "firefox" dalam daftar proses yang sedang berjalan, tetapi mengabaikan baris yang mengandung perintah "grep" sendiri.
 
 Kita dapat menentukan PID dari sebuah proses dengan menggunakan pgrep.
 
-![Screenshot from 2025-02-28 20-49-47.png](assets/pgrep-firefox.png)
+![screenshot](assets/pgrep-firefox.png)
 
 or **pidof**.
 
-![Screenshot from 2025-03-01 04-20-24.png](assets/pidof-firefoxesr.png)
+![screenshot](assets/pidof-firefoxesr.png)
 
 ### **Interactive monitoring with top**
 
@@ -174,7 +173,7 @@ Perintah nice digunakan untuk memulai proses dengan nilai kebaikan tertentu. Sin
 nice -n nice_val [command]
 ```
 
-![Screenshot from 2025-03-01 04-41-59.png](assets/nice.png)
+![screenshot](assets/nice.png)
 
 Dengan menggunakan perintah "nice -n 10 sh [infinite.sh](http://infinite.sh/)", skrip "[infinite.sh](http://infinite.sh/)" dijalankan di latar belakang dengan prioritas CPU yang lebih rendah. Ini menunjukkan bahwa proses ini memiliki prioritas CPU yang lebih rendah daripada proses lain dengan niceness yang lebih rendah atau negatif.
 
@@ -184,7 +183,7 @@ Perintah renice digunakan untuk mengubah nilai kebaikan dari proses yang sedang 
 renice -n nice_val -p pid
 ```
 
-![Screenshot from 2025-03-01 04-50-53.png](assets/renice.png)
+![screenshot](assets/renice.png)
 
 Nilai "kebersihan" proses dengan PID 9021 diubah menjadi "10" dengan perintah "renice -n 10 -p 9021". Ini menurunkan prioritas CPU proses jika dibandingkan dengan proses lain dengan nilai kebersihannya lebih rendah atau negatif.
 
@@ -199,7 +198,7 @@ Default **niceness** adalah **0**, dan semakin rendah nilainya, semakin tinggi p
 
 Kernel Linux menggunakan direktori "/proc" sebagai sistem berkas semu untuk menampilkan informasi tentang "status sistem dan proses yang sedang berjalan". Setiap proses memiliki direktori yang diberi nama berdasarkan PID-nya, yang berisi berbagai berkas yang berisi informasi seperti "baris perintah, variabel lingkungan, dan deskriptor berkas." Perintah seperti "ps" dan "top" membaca data dari direktori.
 
-![process-information.png](assets/process-information.png)
+![screenshot](assets/process-information.png)
 
 ### **Strace and truss**
 
@@ -207,9 +206,9 @@ Di Linux dan FreeBSD, perintah strace melacak panggilan sistem dan sinyal proses
 
 Untuk melacak proses top dengan PID 5810, misalnya, jalankan:
 
-![Screenshot from 2025-03-01 05-03-22.png](assets/install-strace.png)
+![screenshot](assets/install-strace.png)
 
-![Screenshot from 2025-03-01 05-08-34.png](assets/strice.png)
+![screenshot](assets/strice.png)
 
 top dimulai dengan memeriksa waktu saat ini. Selanjutnya, membuka dan membuat statistik direktori /proc, dan membaca file /proc/1/stat untuk mendapatkan informasi tentang proses init.
 
@@ -227,9 +226,9 @@ or
 kill -KILL pid
 ```
 
-![Screenshot from 2025-03-01 05-15-25.png](assets/kill-top.png)
+![screenshot](assets/kill-top.png)
 
-![Screenshot from 2025-03-01 05-16-39.png](assets/top-killed.png)
+![screenshot](assets/top-killed.png)
 
 Untuk menyelidiki "proses runaway", gunakan "strace" untuk melacak aktivitasnya, "df -h" untuk mengecek penggunaan disk, "du" untuk menemukan berkas terbesar, dan "lsof" untuk melihat file yang dibuka oleh proses.
 
@@ -237,7 +236,7 @@ Untuk menyelidiki "proses runaway", gunakan "strace" untuk melacak aktivitasnya,
 lsof -p pid
 ```
 
-![Screenshot from 2025-03-01 05-17-39.png](assets/lsof.png)
+![screenshot](assets/lsof.png)
 
 Perintah `lsof -p PID` menampilkan daftar semua file yang sedang dibuka oleh proses dengan **PID** tertentu, termasuk file biasa, socket, dan pipe.
 
@@ -275,9 +274,9 @@ Contoh:
 30 2 1 * * /usr/bin/python3 /path/to/script.py
 ```
 
-![Screenshot from 2025-03-01 05-33-18.png](assets/crontab1.png)
+![screenshot](assets/crontab1.png)
 
-![Screenshot from 2025-03-01 05-34-34.png](assets/crontab2.png)
+![screenshot](assets/crontab2.png)
 
 Berikut jadwalnya: 0,30 * 13 * 5 berarti bahwa perintah akan dijalankan pada 0 dan 30 menit setelah jam ke-13 pada hari Jumat. Jika Anda ingin menjalankan perintah setiap 30 menit, Anda dapat menggunakan jadwal berikut: */30 * * * *.
 
@@ -289,13 +288,13 @@ Berikut jadwalnya: 0,30 * 13 * 5 berarti bahwa perintah akan dijalankan pada 0 d
 systemctl list-timers
 ```
 
-![image.png](assets/systemctl-list-timers.png)
+![screenshot](assets/systemctl-list-timers.png)
 
 Pada contoh di atas, unit logrotate.timer dijadwalkan untuk mengaktifkan unit logrotate.service pada tengah malam setiap hari.
 
 Berikut ini adalah tampilan unit logrotate.timer:
 
-![image.png](assets/cat.png)
+![screenshot](assets/cat.png)
 
 Opsi OnCalendar digunakan untuk menentukan kapan timer harus mengaktifkan layanan. Opsi AccuracySec digunakan untuk menentukan akurasi pengatur waktu. Opsi Persistent digunakan untuk menentukan apakah timer harus mengejar waktu yang terlewat.
 
@@ -307,13 +306,13 @@ Anda dapat secara otomatis mengirim email output laporan harian atau hasil eksek
 
 Sebagai contoh:
 
-![image.png](assets/crontab3.png)
+![screenshot](assets/crontab3.png)
 
 **Cleaning up a filesystem**
 
 Anda dapat menjalankan skrip yang membersihkan sistem berkas dengan menggunakan pengatur waktu cron atau systemd. Sebagai contoh, Anda dapat menjalankan skrip untuk membersihkan isi direktori sampah setiap hari pada tengah malam.
 
-![image.png](assets/crontab4.png)
+![screenshot](assets/crontab4.png)
 
 Membersihkan file lama di Trash (>30 hari) secara otomatis setiap tengah malam.
 
