@@ -10,19 +10,19 @@ NTP Secure (NTPsec) adalah versi yang telah diperkuat dari NTP, dirancang untuk 
 
 1. Install dan konfigurasi NTP client agar host anda mempunyai Waktu yang sinkron dengan NTP server di Indonesia
     
-    ![install-ntpsec.jpg](attachment:01c3691f-6c7d-4a89-85af-fb2eda90a9e5:install-ntpsec.jpg)
+    ![install-ntpsec.jpg](assets/install-ntpsec.jpg)
     
 2. Cek waktu berdasarkan lokasi saya
     
-    ![date.png](attachment:4813b8b8-94ef-4d5f-8757-0654ed7100f7:date.png)
+    ![date.png](assets/date.png)
     
 3. nama NTP server yang harus dirujuk adalah ntp server Indonesia
     
-    ![set-server-indo.jpg](attachment:d5af3e10-1af9-48e2-ae38-7875f157484c:set-server-indo.jpg)
+    ![set-server-indo.jpg](assets/set-server-indo.jpg)
     
     Selanjutnya restart seperti gambar dibawah ini:
     
-    ![ntpq.jpg](attachment:1bbd435e-6cd6-478d-9b5e-2e43656f7fcb:ntpq.jpg)
+    ![ntpq.jpg](assets/ntpq.jpg)
     
 
 ### B. Instalasi dan konfigurasi Samba
@@ -31,7 +31,7 @@ NTP Secure (NTPsec) adalah versi yang telah diperkuat dari NTP, dirancang untuk 
     
     Install samba
     
-    ![install-samba.jpg](attachment:299423f0-6317-44b3-8591-313f1ee0ebe5:install-samba.jpg)
+    ![install-samba.jpg](assets/install-samba.jpg)
     
     ```bash
     mkdir /home/share
@@ -53,7 +53,7 @@ NTP Secure (NTPsec) adalah versi yang telah diperkuat dari NTP, dirancang untuk 
     
     Selanjutnya lakukan konfigurasi seperti gambar di bawah ini:
     
-    ![smb1.jpg](attachment:cfb9ea78-3724-4a7d-8518-3d469a27a761:smb1.jpg)
+    ![smb1.jpg](assets/smb1.jpg)
     
     ```bash
     unix charset = UTF-8 
@@ -73,7 +73,7 @@ NTP Secure (NTPsec) adalah versi yang telah diperkuat dari NTP, dirancang untuk 
     
     Mengalihkan pengguna tidak dikenal ke akun guest secara otomatis.
     
-    ![smb2.jpg](attachment:6766a9fb-af10-4424-8aee-6ea61f3d724e:smb2.jpg)
+    ![smb2.jpg](assets/smb2.jpg)
     
     ```bash
     [Share]
@@ -123,17 +123,17 @@ NTP Secure (NTPsec) adalah versi yang telah diperkuat dari NTP, dirancang untuk 
     
     Me-restart layanan Samba agar perubahan konfigurasi diterapkan.
     
-    ![cek-status-smbd.jpg](attachment:3b0723e4-9b5a-4779-a6b9-35362039c57c:cek-status-smbd.jpg)
+    ![cek-status-smbd.jpg](assets/cek-status-smbd.jpg)
     
     Setelah direstart, ketik `systemctl status smbd` untuk cek status dari samba aktif apa belum.
     
     Akses menggunakan Window Client:
     
-    ![cek-di-laptop-with-lan.png](attachment:811f309e-ea6b-4013-8487-30b85f1ed6b7:cek-di-laptop-with-lan.png)
+    ![cek-di-laptop-with-lan.png](assets/cek-di-laptop-with-lan.png)
     
     Akses menggunakan Debian Client:
     
-    ![cek-di-host.jpg](attachment:ceb293b0-fcfd-4d84-ac2c-122b4de9cf10:cek-di-host.jpg)
+    ![cek-di-host.jpg](assets/cek-di-host.jpg)
     
 2. Membuat limited shared Folder
     
@@ -167,7 +167,7 @@ NTP Secure (NTPsec) adalah versi yang telah diperkuat dari NTP, dirancang untuk 
     
     Membuka file konfigurasi Samba untuk diedit.
     
-    ![smb1.jpg](attachment:cfb9ea78-3724-4a7d-8518-3d469a27a761:smb1.jpg)
+    ![smb1.jpg](assets/smb1.jpg)
     
     ```bash
     unix charset = UTF-8 
@@ -181,7 +181,7 @@ NTP Secure (NTPsec) adalah versi yang telah diperkuat dari NTP, dirancang untuk 
     
     Membatasi akses Samba hanya untuk localhost dan jaringan 10.0.0.0/24.
     
-    ![limited4.png](attachment:fa064d2e-0cee-4770-b94f-216070f064c4:limited4.png)
+    ![limited4.png](assets/limited4.png)
     
     ```bash
     [Share01]
@@ -255,13 +255,13 @@ NTP Secure (NTPsec) adalah versi yang telah diperkuat dari NTP, dirancang untuk 
     
     Membuat akun pengguna **dewangga** di sistem.
     
-    ![limited3.png](attachment:018f1d14-5fbd-4638-8c5b-234967cc7ba9:limited3.png)
+    ![limited3.png](assets/limited3.png)
     
     smbpasswd -a debian
     
     Menambahkan pengguna **dewangga** ke Samba dan mengatur kata sandinya.
     
-    ![Screenshot 2025-03-09 123514.png](attachment:b884cf8f-fd08-4abf-9dca-73af76c37f44:Screenshot_2025-03-09_123514.png)
+    ![Screenshot 2025-03-09 123514.png](assets/Screenshot%202025-03-09%20123514.png)
     
     ```bash
     usermod -aG wangsagroup01 debian
@@ -271,19 +271,19 @@ NTP Secure (NTPsec) adalah versi yang telah diperkuat dari NTP, dirancang untuk 
     
     Akses menggunakan Window Client dan login dengan user yang telah ditentukan:
     
-    ![Screenshot 2025-03-09 123642.png](attachment:fb9b8e00-56bc-483e-a926-bf290751a02a:Screenshot_2025-03-09_123642.png)
+    ![Screenshot 2025-03-09 123642.png](assets/Screenshot%202025-03-09%20123642.png)
     
-    ![Screenshot 2025-03-10 195615.png](attachment:e3675f8a-cea7-4e6e-b90f-3e505878564e:Screenshot_2025-03-10_195615.png)
+    ![Screenshot 2025-03-10 195615.png](assets/Screenshot%202025-03-10%20195615.png)
     
     Akses menggunakan Debian Client dan login dengan user yang telah ditentukan:
     
-    ![Screenshot 2025-03-10 200857.png](attachment:8c74c7ce-fe8f-4b2b-838c-4db4e1ba8670:Screenshot_2025-03-10_200857.png)
+    ![Screenshot 2025-03-10 200857.png](assets/Screenshot%202025-03-10%20200857.png)
     
-    ![Screenshot 2025-03-10 200930.png](attachment:c8fd3cea-0af8-4dc9-9aa5-6ea6bb83877c:Screenshot_2025-03-10_200930.png)
+    ![Screenshot 2025-03-10 200930.png](assets/Screenshot%202025-03-10%20200930.png)
     
 3. akses ke folder Share dari CLI client
 
-![image.png](attachment:6aa75d7b-e03b-4f0d-ab56-51a84a72367e:image.png)
+![image.png](assets/Screenshot%202025-03-09%20124215.png)
 
 ### C. Buat rangkuman tentanag package management.
 
@@ -332,23 +332,23 @@ NTP Secure (NTPsec) adalah versi yang telah diperkuat dari NTP, dirancang untuk 
 
 Software (Simplified Package Manager) adalah alat manajemen paket yang dirancang untuk memudahkan pengguna dalam menginstal, memperbarui, dan menghapus aplikasi di sistem operasi berbasis Linux, seperti Debian dan Ubuntu. Berbeda dengan manajer paket berbasis terminal seperti APT, Software menyediakan antarmuka grafis yang lebih intuitif, memungkinkan pengguna untuk mencari dan mengelola aplikasi tanpa perlu mengetik perintah di terminal. Manajer paket ini sering digunakan oleh pengguna yang menginginkan kemudahan dalam mengelola perangkat lunak tanpa harus memahami detail teknis dari sistem manajemen paket yang lebih kompleks.
 
-![image.png](attachment:e6327b60-3396-4a29-bd9c-119a66e623fc:image.png)
+![image.png](assets/s.png)
 
 **Discover: KDE Package Manager**
 
 Discover: KDE Package Manager adalah alat manajemen paket berbasis GUI yang dikembangkan untuk lingkungan desktop KDE Plasma. Discover memungkinkan pengguna untuk mencari, menginstal, memperbarui, dan menghapus aplikasi serta ekstensi dengan antarmuka yang ramah pengguna. Selain mendukung berbagai format paket seperti DEB, RPM, Flatpak, dan Snap, Discover juga dapat mengelola pembaruan sistem secara langsung. Dengan desain yang sederhana dan integrasi yang baik dengan ekosistem KDE, Discover menjadi pilihan ideal bagi pengguna yang menginginkan kemudahan dalam mengelola perangkat lunak tanpa harus menggunakan perintah terminal.
 
-![image.png](attachment:4de523bd-96c3-4d28-ab1b-4e83c7f9e1e4:image.png)
+![image.png](assets/k.png)
 
 **Synaptic: Comprehensive Package Manager** 
 
 Synaptic: Comprehensive Package Manager ****adalah alat manajemen paket berbasis GUI yang dirancang untuk sistem berbasis Debian, seperti Ubuntu. Synaptic memberikan kontrol penuh atas instalasi, pembaruan, dan penghapusan paket dengan antarmuka yang lebih mendalam dibandingkan dengan manajer paket sederhana. Pengguna dapat melihat daftar lengkap paket yang tersedia, menyaring berdasarkan kategori, serta melihat dependensi dan file terkait sebelum melakukan perubahan. Dengan fitur pencarian yang kuat dan dukungan untuk berbagai konfigurasi sistem, Synaptic menjadi pilihan ideal bagi pengguna yang menginginkan fleksibilitas dan kendali penuh atas perangkat lunak mereka tanpa harus menggunakan terminal.
 
-![image.png](attachment:71b8a301-6f6c-4f7e-b82f-162eeb88472c:image.png)
+![image.png](assets/sy.png)
 
 **GDebi** 
 
-![image.png](attachment:5a7ec694-5c4c-4162-8cb1-56d2e80fb1f2:image.png)
+![image.png](assets/g.png)
 
 GDebi adalah alat manajemen paket yang digunakan untuk menginstal paket **.deb** di sistem berbasis Debian dan Ubuntu. Dibandingkan dengan **dpkg**, GDebi memiliki keunggulan dalam menangani dependensi secara otomatis, sehingga memastikan semua pustaka dan paket tambahan yang dibutuhkan juga terinstal. GDebi tersedia dalam versi antarmuka grafis (GUI) maupun mode terminal (CLI), memungkinkan pengguna untuk menginstal paket dengan mudah dan efisien tanpa harus mencari dan menginstal dependensi secara manual.
 
