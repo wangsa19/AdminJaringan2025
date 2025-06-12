@@ -29,12 +29,12 @@ root@dlp:~# apt -y install bind9 bind9utils
 
 Menambahkan file konfigurasi baru yaitu `named.conf.internal-zones` ke dalam file utama konfigurasi BIND `/etc/bind/named.conf`
 
-![SS](Images/00.jpg)
-![SS](Images/topologi-dns.jpg)
+![SS](images/00.jpg)
+![SS](images/topologi-dns.jpg)
 
 ### Konfigurasi akses kontrol dan kebijakan query pada BIND DNS Server
 
-![SS](Images/1.jpg)
+![SS](images/1.jpg)
 
 - **Menentukan ACL (Access Control List)**
   - Membuat ACL bernama `internal-network` untuk jaringan **192.168.4.0/24**. Dimana jaringan ini adalah jaringan dari Mikrotik yang sudah diberikan untuk kelompok 4
@@ -50,7 +50,7 @@ Menambahkan file konfigurasi baru yaitu `named.conf.internal-zones` ke dalam fil
 
 ### Konfigurasi Zona DNS di BIND
 
-![SS](Images/2.jpg)
+![SS](images/2.jpg)
 
 - **Zona Forward (kelompok4.home)**
   - Zona ini digunakan untuk menerjemahkan **nama domain ke alamat IP**.
@@ -64,7 +64,7 @@ Menambahkan file konfigurasi baru yaitu `named.conf.internal-zones` ke dalam fil
 
 ### Konfigurasi opsi BIND untuk menggunakan hanya IPv4 dan menonaktifkan IPv6
 
-![SS](Images/3.jpg)
+![SS](images/3.jpg)
 
 **Mengedit file `/etc/default/named`**
 
@@ -78,7 +78,7 @@ Menambahkan file konfigurasi baru yaitu `named.conf.internal-zones` ke dalam fil
 Buat file zona yang memungkinkan server menerjemahkan nama domain menjadi alamat IP.
 Konfigurasikan seperti di bawah ini menggunakan Jaringan internal [**192.168.4.0/24**.], Nama domain [kelompok4.home].
 
-![SS](Images/4.jpg)
+![SS](images/4.jpg)
 
 Konfigurasi ini sudah disediakan dari PC Pusat jaringan dari semua kelompok, sehingga konfigurasinya hanya perlu disamakan saja. Serial pada konfigurasi diganti dengan tanggal konfigurasi dilakukan. Pada konfigurasi di atas menggunakan ``ns`` yaitu **Name Server** yang berfungsi untuk menerjemahkan nama domain (seperti kelompok4.home) menjadi alamat IP.
 ### Pembuatan dan konfigurasi file zona reverse lookup pada BIND DNS Server.
@@ -86,7 +86,7 @@ Konfigurasi ini sudah disediakan dari PC Pusat jaringan dari semua kelompok, seh
 Buat file zona yang memungkinkan server menerjemahkan alamat IP menjadi nama domain.
 Konfigurasikan seperti di bawah ini menggunakan Jaringan internal [**192.168.4.0/24**.], Nama domain [kelompok4.home].
 
-![SS](Images/5.jpg)
+![SS](images/5.jpg)
 
 ## BIND: Verify Resolution
 
@@ -100,24 +100,24 @@ root@dlp:~# systemctl restart named
 
 ### Konfigurasi DNS Client untuk menggunakan DNS Server sendiri
 
-![SS](Images/6.jpg)
+![SS](images/6.jpg)
 
 File **`/etc/resolv.conf`** digunakan oleh sistem Linux untuk menentukan **DNS server mana yang akan digunakan untuk melakukan query DNS** (resolving domain ke IP dan sebaliknya).
 ### DNS Query menggunakan DiG (Domain Information Groper) untuk Forward Lookup.
 #### Testing pada PC yang digunakan untuk konfigurasi
 
-![SS](Images/7.jpg)
+![SS](images/7.jpg)
 
 Perintah di atas digunakan untuk **mengecek resolusi nama domain ke alamat IP (Forward DNS Lookup)** dengan memanfaatkan **DNS Server yang telah dikonfigurasi**. Dapat dilihat pada gambar, ``ANSWER: 1`` menandakan bahwa server DNS memberikan satu jawaban atau respons dari query yang dikirimkan yang artinya DNS Server sudah berhasil terkoneksi.
 
 #### Testing pada PC lain yang terhubung pada IP jaringan yang sama
 
-![SS](Images/8-tes-dig.jpg)
+![SS](images/8-tes-dig.jpg)
 Gambar di atas adalah konfigurasi resolv.conf pada PC lain yang terhubung pada IP jaringan yang sama pada PC yang digunakan untuk konfigurasi, dapat dilihat pada gambar bahwa nameserver diubah menjadi IP yang digunakan untuk konfigurasi tadi. 
 
 **Gambar di bawah adalah hasil testing dig pada pc lain yang terhubung pada jaringan IP yang sama**
 
-![SS](Images/9-resolv-pc-lain.jpg)
+![SS](images/9-resolv-pc-lain.jpg)
 
 # Konfigurasi Web Server
 
@@ -129,12 +129,12 @@ root@www:~# apt -y install apache2
 
 Gunakan perintah di atas untuk melakukan instalasi apache2
 
-![SS](Images/10-tes-dig-pc-lain.jpg)
+![SS](images/10-tes-dig-pc-lain.jpg)
 ## Konfigurasi Apache2
 
 ### Konfigurasi Security (/etc/apache2/conf-enabled/security.conf)
 
-![SS](Images/11-instalasi-apache.jpg)
+![SS](images/11-instalasi-apache.jpg)
 
 **Fungsi**:
 - Membatasi informasi yang ditampilkan di header HTTP respons server
@@ -144,7 +144,7 @@ Gunakan perintah di atas untuk melakukan instalasi apache2
 
 ### Konfigurasi Directory Index
 
-![SS](Images/12.jpg)
+![SS](images/12.jpg)
 
 Pada Konfigurasi ini seharusnya diubah menjadi hanya meninggalkan ``index.html`` dan ``index.htm``, tetapi tidak diubahpun outputnya akan tetap sama. Pengubahan menjadi hanya ``index.html`` dan ``index.htm`` bertujuan untuk:
 - Menentukan file yang dicari Apache ketika client mengakses URL tanpa menentukan file spesifik
@@ -154,7 +154,7 @@ Pada Konfigurasi ini seharusnya diubah menjadi hanya meninggalkan ``index.html``
 
 ### Konfigurasi ServerName
 
-![SS](Images/13.jpg)
+![SS](images/13.jpg)
 
 Konfigurasi ini berfungsi untuk:
 - Mendefinisikan nama host utama server
@@ -165,7 +165,7 @@ Konfigurasi ini berfungsi untuk:
 
 ### Konfigurasi Email Administrator
 
-![SS](Images/14.jpg)
+![SS](images/14.jpg)
 
 Konfigurasi ini berfungsi untuk:
 - Menetapkan alamat email administrator server
@@ -182,4 +182,4 @@ root@www:~# systemctl reload apache2
 
 Jika Konfigurasi sudah di reload dan berhasil, maka bisa di-test dengan browser domain yang sudah dikonfigurasi dari awal tadi.
 
-![SS](Images/15.jpg)
+![SS](images/15.jpg)
